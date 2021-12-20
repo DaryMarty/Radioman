@@ -3,13 +3,30 @@ package ru.netology.domian;
 public class Radio {
     private int currentRadioStation;
     private int soundVolume;
+    private int NumberOfRadioStation = 10;
+
+    public Radio(int numberOfRadioStation) {
+        NumberOfRadioStation = numberOfRadioStation;
+    }
+
+    public Radio() {
+    }
+
+    public int getNumberOfRadioStation() {
+        return NumberOfRadioStation;
+    }
+
+    public void setNumberOfRadioStation(int NumberOfRadioStation) {
+        this.NumberOfRadioStation = NumberOfRadioStation;
+    }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation > 9) {
+        int maxNumberRadio = this.NumberOfRadioStation - 1;
+        if (currentRadioStation > maxNumberRadio) {
             return;
         }
         if (currentRadioStation < 0) {
@@ -19,7 +36,8 @@ public class Radio {
     }
 
     public void nextRadioStation() {
-        if (currentRadioStation == 9) {
+        int maxNumberRadio = this.NumberOfRadioStation - 1;
+        if (currentRadioStation == maxNumberRadio) {
             currentRadioStation = 0;
         } else {
             currentRadioStation = currentRadioStation + 1;
@@ -27,8 +45,9 @@ public class Radio {
     }
 
     public void prevRadioStation() {
+        int maxNumberRadio = this.NumberOfRadioStation - 1;
         if (currentRadioStation == 0) {
-            currentRadioStation = 9;
+            currentRadioStation = maxNumberRadio;
         } else {
             currentRadioStation = currentRadioStation - 1;
         }
@@ -39,7 +58,7 @@ public class Radio {
     }
 
     public void setSoundVolume(int soundVolume) {
-        if (soundVolume > 10) {
+        if (soundVolume > 100) {
             return;
         }
         if (soundVolume < 0) {
@@ -49,7 +68,7 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        if (soundVolume < 10) {
+        if (soundVolume < 100) {
             soundVolume = soundVolume + 1;
         }
     }
